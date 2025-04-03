@@ -1,0 +1,74 @@
+header {
+    padding: 15px;
+    display: grid;
+    grid-template-areas:
+        "Cte  titulo   carrito";
+    grid-template-rows: 2fr;
+    grid-template-columns: 2fr 2fr 2fr;
+    background-color: rgb(156, 152, 152);
+    height: 80px;
+    border: 1px solid black;
+}
+#main {
+    margin: 50px;
+    display: grid;
+    grid-template-areas:
+    "Detalle  Subtotal";
+    grid-template-rows: 2fr;
+    grid-template-columns: 2fr 1fr;
+    justify-items: center;
+}
+.titulo {
+    grid-area: titulo;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.nav {
+    grid-area: nav;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.carrito {
+    grid-area: carrito;
+    display: flex;
+    flex-direction: row-reverse;
+}
+#Cte{
+    grid-area: Cte;
+}
+.sec1 {
+    grid-area: "Detalle";
+}
+#sec2{
+    grid-area: "Subtotal";
+}
+#detalle {
+    border: 2px solid black;
+    padding: 10px;
+    width: 850px;
+    height: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "IMG  nombreproducto aumentar";
+    gap: 10px; 
+    align-items: center;
+    justify-items: center;
+    background-color:azure;
+}
+.Precio{
+    display: flex;
+    justify-content: center;
+}
+.subtotal{
+    border: 2px solid black;
+    padding: 10px;
+    width: 315px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color:azure;
+}
