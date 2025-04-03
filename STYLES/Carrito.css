@@ -9,20 +9,14 @@ header {
     height: 80px;
     border: 1px solid black;
 }
-#main {
-    margin: 50px;
-    display: grid;
-    grid-template-areas:
-    "Detalle  Subtotal";
-    grid-template-rows: 2fr;
-    grid-template-columns: 2fr 1fr;
-    justify-items: center;
-}
 .titulo {
     grid-area: titulo;
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+.titulo a{
+    text-decoration: none; color: black;
 }
 .nav {
     grid-area: nav;
@@ -35,8 +29,22 @@ header {
     display: flex;
     flex-direction: row-reverse;
 }
+.img{
+    width:50px;
+    height:35px;
+}
 #Cte{
     grid-area: Cte;
+}
+
+#main {
+    margin: 50px;
+    display: grid;
+    grid-template-areas:
+    "Detalle  Subtotal";
+    grid-template-rows: 2fr;
+    grid-template-columns: 2fr 1fr;
+    justify-items: center;
 }
 .sec1 {
     grid-area: "Detalle";
@@ -71,4 +79,75 @@ header {
     flex-direction: column;
     align-items: flex-start;
     background-color:azure;
+}
+
+/*-----------.----------*/
+
+@media (max-width:1024px){
+    #detalle {
+        border: 1px solid black;
+        padding: 5px;
+        width: 550px;
+        height: 200px;
+    }
+    .subtotal{
+        border: 1px solid black;
+        padding: 10px;
+        width: 215px;
+        height: 200px;
+    }
+}
+
+@media (max-width:768px){
+
+    .titulo h2{
+        font-size: 25px;
+    }
+    .img{
+        width:"20";
+        height:"15"
+    }
+    #detalle {
+        border: 1px solid black;
+        padding: 5px;
+        width: 400px;
+        height: 150px;
+    }
+    .subtotal{
+        border: 1px solid black;
+        padding: 10px;
+        width: 180px;
+        height: 150px;
+    }
+    .subtotal h4{
+        font-size: 13px;
+    }
+}
+
+@media (max-width:425px){
+    header{
+        height: 60px;
+    }
+    .titulo h2{
+        font-size: 13px;
+    }
+    .img{
+        width:32px;
+        height:20px;
+    }
+    #detalle {
+        border: 1px solid black;
+        padding: 5px;
+        width: 240px;
+        height: 150px;
+    }
+    .subtotal{
+        border: 1px solid black;
+        padding: 10px;
+        width: 100px;
+        height: 150px;
+    }
+    .subtotal h4{
+        font-size: 12px;
+    }
 }

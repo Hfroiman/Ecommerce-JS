@@ -9,6 +9,30 @@ header {
     height: 80px;
     border: 1px solid black;
 }
+.titulo {
+    grid-area: titulo;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-decoration: none; 
+    color: black;
+}
+.titulo .enlace1{
+    text-decoration: none;
+    color: black;
+}
+.carrito {
+    grid-area: carrito;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.img{
+    width:50px;
+    height:35px;
+}
+h2{
+    padding-bottom: 45px;
+}
 #main {
     margin: 30px;
     justify-items: center;
@@ -25,25 +49,33 @@ header {
     justify-content: center;
     align-items: center;
 }
-.titulo {
-    grid-area: titulo;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-decoration: none; 
+#contenedor-principal h2{
     color: black;
 }
-.nav {
-    grid-area: nav;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+/*-----------.----------*/
+
+@media (max-width:768px){
+    .titulo h2{
+        font-size: 25px;
+    }
+    #contenedor-principal{
+        width: 350px;
+        height: 350px
+    }
 }
-.carrito {
-    grid-area: carrito;
-    display: flex;
-    flex-direction: row-reverse;
-}
-h2{
-    padding-bottom: 45px;
+@media (max-width:425px){
+    header{
+        height: 60px;
+    }
+    .titulo h2{
+        font-size: 13px;
+    }
+    .img{
+        width:32px;
+        height:20px;
+    }
+    #contenedor-principal{
+        width: 250px;
+        height: 250px
+    }
 }

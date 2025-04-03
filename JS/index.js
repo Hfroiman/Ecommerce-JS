@@ -17,7 +17,6 @@ catch (error) {
 
 function Productos1linea(Productos){
     try{
-        debugger
         Productos.push({Titulo:"SMART 32", Descripcion:"Some quick example text to build on the card title and make up the bulk of the card's content.", Precio:"$10000",IMG:"IMG/32.jpg"});
         Productos.push({Titulo:"SMART 42", Descripcion:"Some quick example text to build on the card title and make up the bulk of the card's content.", Precio:"$25000",IMG:"IMG/42.jpg"});
         Productos.push({Titulo:"SMART 52", Descripcion:"Some quick example text to build on the card title and make up the bulk of the card's content.", Precio:"$35000",IMG:"IMG/52.jpg"});
@@ -63,9 +62,8 @@ function RecorrercadaProducto(Productos){
 }
 
 function CargarCards(elem){
-    debugger
     let newPlantilla = document.createElement("div");
-    newPlantilla.innerHTML='<div class="card"><div class="img"><img src="'+ elem.IMG +'" class="card-img-top" alt="Prodcuto"></div><div class="titulo"><h2>'+elem.Titulo+'</h2></div><div class="Descripción"><b>'+elem.Descripcion+'</b></div><div class="Precio">Precio: '+ elem.Precio +'</div><div class="Btones"><button type="button" class="btn btn-warning">Agregar a carrito</button><button type="button" class="btn btn-primary">Comprar</button></div></div>';
+    newPlantilla.innerHTML='<div class="card"><div class="img2"><img src="'+ elem.IMG +'" class="card-img-top" alt="Prodcuto"></div><div class="titulo"><h2>'+elem.Titulo+'</h2></div><div class="Descripción"><b>'+elem.Descripcion+'</b></div><div class="Precio">Precio: '+ elem.Precio +'</div><div class="Btones"><button type="button" class="btn btn-warning">Agregar a carrito</button><button type="button" class="btn btn-primary">Comprar</button></div></div>';
     primer<=6?(document.getElementById("pr1").appendChild(newPlantilla), primer++):document.getElementById("pr2").appendChild(newPlantilla);
 }
 
