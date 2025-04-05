@@ -29,10 +29,6 @@ header {
     display: flex;
     flex-direction: row-reverse;
 }
-.img{
-    width:50px;
-    height:35px;
-}
 #Cte{
     grid-area: Cte;
 }
@@ -66,6 +62,16 @@ header {
     justify-items: center;
     background-color:azure;
 }
+
+.img{
+    width:50px;
+    height:35px;
+}
+.IMG{
+    width:150px;
+    height:100px;   
+}
+
 .Precio{
     display: flex;
     justify-content: center;

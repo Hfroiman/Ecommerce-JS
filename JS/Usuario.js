@@ -12,6 +12,6 @@ botonconfirmar.onclick = ()=> {
         }
     }
     catch(error){
-        prompt("Error: " + error);
+        prompt("Error: Al iniciar sesion. " + error);
     }
 }
