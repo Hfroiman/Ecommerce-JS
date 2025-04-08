@@ -19,7 +19,7 @@ try {
         let sesion = sessionStorage.getItem("Usuario");
         let contenedor = document.getElementById("Cte");
         contenedor.innerHTML = "<h3>Bienvenidx " + sesion + "</h3>";
-    }
+        }
     RecorrercadaProducto(Productos);
 }
 catch (error) {
@@ -27,63 +27,115 @@ catch (error) {
 }
 
 function RecorrercadaProducto(Productos) {
-    Productos.forEach(elem => {
-        CargarCards(elem)
-    });
+    try {
+        Productos.forEach(elem => {
+            CargarCards(elem)
+        });
+    }
+    catch (error) {
+        prompt("error: " + error);
+    }
 }
 
 function CargarCards(elem) {
-    let newPlantilla = document.createElement("div");
-    newPlantilla.innerHTML =
-        '<div class="card"><div class="img2"><img src="' + elem.IMG + '" class="card-img-top" alt="Prodcuto"></div><div class="titulo"><h2>' + elem.Titulo + '</h2></div><div class="Descripción"><b>' + elem.Descripcion + '</b></div><div class="Precio">Precio: $' + elem.Precio + '</div><div class="Btones"><button type="button" class="btn btn-warning" ID="BtnAgregarcarrito" onclick="Agregaralcarrito(' + elem.Id + ')" >Agregar a carrito</button><button type="button" class="btn btn-primary" id="btncomprar">Comprar</button></div></div>';
-    primer <= 6 ? (document.getElementById("pr1").appendChild(newPlantilla), primer++) : document.getElementById("pr2").appendChild(newPlantilla);
+    try {
+        let newPlantilla = document.createElement("div");
+        newPlantilla.innerHTML =
+            '<div class="card"><div class="img2"><img src="' + elem.IMG + '" class="card-img-top" alt="Prodcuto"></div><div class="titulo"><h2>' + elem.Titulo + '</h2></div><div class="Descripción"><b>' + elem.Descripcion + '</b></div><div class="Precio">Precio: $' + elem.Precio + '</div><div class="Btones"><button type="button" class="btn btn-warning" ID="BtnAgregarcarrito" onclick="Agregaralcarrito(' + elem.Id + ')" >Agregar a carrito</button><button type="button" class="btn btn-primary" id="btncomprar">Comprar</button></div></div>';
+        primer <= 6 ? (document.getElementById("pr1").appendChild(newPlantilla), primer++) : document.getElementById("pr2").appendChild(newPlantilla);
+    }
+    catch (error) {
+        prompt("error: " + error);
+    }
 }
 
 function Agregaralcarrito(id){
-    BuscarCarrito(id)
+    try {
+        BuscarCarrito(id);
+        ProductoAgregado();
+    }
+    catch (error) {
+        prompt("error: " + error);
+    }
 }
 
 function BuscarCarrito(id){
-    for(let i=0; i<Productos.length; i++){
-        if(Productos[i].Id == id){
-            ActualizarCarrito(Productos[i]);
+    try {
+        for(let i=0; i<Productos.length; i++){
+            if(Productos[i].Id == id){
+                ActualizarCarrito(Productos[i]);
+            }
         }
+    }
+    catch (error) {
+        prompt("error: " + error);
     }
 }
 
 function ActualizarCarrito(elemento) {
-    let carrito = [];
-    if (sessionStorage.getItem("Carrito") != null) {
-        carrito = JSON.parse(sessionStorage.getItem("Carrito"));
-
-        if (!Array.isArray(carrito)) {
-            carrito = [carrito];
+    try {
+        let carrito = [];
+        if (sessionStorage.getItem("Carrito") != null) {
+            carrito = JSON.parse(sessionStorage.getItem("Carrito"));
+    
+            if (!Array.isArray(carrito)) {
+                carrito = [carrito];
+            }
         }
+        carrito.push(elemento);
+        let min = 1;
+        if (min != carrito.length) {
+            VerificarProductos(carrito, carrito.length)
+        }
+        sessionStorage.setItem("Carrito", JSON.stringify(carrito));
     }
-    debugger
-    carrito.push(elemento);
-    let min = 1;
-    if (min != carrito.length) {
-        VerificarProductos(carrito, carrito.length)
+    catch (error) {
+        prompt("error: " + error);
     }
-    sessionStorage.setItem("Carrito", JSON.stringify(carrito));
 }
 
 function VerificarProductos(carrito, cant) {
-    debugger
-    let bandera = 0;
-    while(bandera < cant){
-        let contador = 0;
-        for(let i=bandera+1;i<cant;i++){
-            if(carrito[bandera].Id == carrito[i].Id){
-                contador=i;
+    try {
+        let bandera = 0;
+        while(bandera < cant){
+            let contador = 0;
+            for(let i=bandera+1;i<cant;i++){
+                if(carrito[bandera].Id == carrito[i].Id){
+                    contador=i;
+                }
             }
+            if(contador!=0){
+                carrito[bandera].Cantidad++;
+                carrito.splice(contador,1);
+                cant--;
+            }
+            bandera++;
         }
-        if(contador!=0){
-            carrito[bandera].Cantidad++;
-            carrito.splice(contador,1);
-            cant--;
-        }
-        bandera++;
+    }
+    catch (error) {
+        prompt("error: " + error);
+    }
+}
+
+function ProductoAgregado(){
+    try {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Agregado al carrito"
+          });
+    }
+    catch (error) {
+        prompt("error: " + error);
     }
 }
