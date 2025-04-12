@@ -41,7 +41,7 @@ function CargarCards(elem) {
     try {
         let newPlantilla = document.createElement("div");
         newPlantilla.innerHTML =
-            '<div class="card"><div class="img2"><img src="' + elem.IMG + '" class="card-img-top" alt="Prodcuto"></div><div class="titulo"><h2>' + elem.Titulo + '</h2></div><div class="Descripción"><b>' + elem.Descripcion + '</b></div><div class="Precio">Precio: $' + elem.Precio + '</div><div class="Btones"><button type="button" class="btn btn-warning" ID="BtnAgregarcarrito" onclick="Agregaralcarrito(' + elem.Id + ')" >Agregar a carrito</button><button type="button" class="btn btn-primary" id="btncomprar">Comprar</button></div></div>';
+            '<div class="card"><div class="img2"><img src="' + elem.IMG + '" class="card-img-top" alt="Prodcuto"></div><div class="titulo"><h2>' + elem.Titulo + '</h2></div><div class="Descripción"><b>' + elem.Descripcion + '</b></div><div class="Precio">Precio: $' + elem.Precio + '</div><div class="Btones"><button type="button" class="btn btn-warning" ID="BtnAgregarcarrito" onclick="Agregaralcarrito(' + elem.Id + ')" >Agregar a carrito</button><button type="button" class="btn btn-primary" id="btncomprar"  onclick="Comprar('+ elem.Id +')">Comprar</button></div></div>';
         primer <= 6 ? (document.getElementById("pr1").appendChild(newPlantilla), primer++) : document.getElementById("pr2").appendChild(newPlantilla);
     }
     catch (error) {
@@ -53,6 +53,17 @@ function Agregaralcarrito(id){
     try {
         BuscarCarrito(id);
         ProductoAgregado();
+    }
+    catch (error) {
+        prompt("error: " + error);
+    }
+}
+
+function Comprar(id){
+    try {
+        BuscarCarrito(id);
+        ProductoAgregado();
+        setTimeout(() => {window.location.href = "Carrito.html";}, 1600);
     }
     catch (error) {
         prompt("error: " + error);
