@@ -70,33 +70,27 @@ function Comprar(id){
     }
 }
 
-function BuscarCarrito(id){
+function BuscarCarrito(id){//BUSCA EL PRODUCTO SELECCIONADO Y LO ENVIA
     try {
-        for(let i=0; i<Productos.length; i++){
-            if(Productos[i].Id == id){
-                ActualizarCarrito(Productos[i]);
-            }
-        }
+        const productoseleccionado = Productos.find(pr => pr.Id == id);
+        ActualizarCarrito(productoseleccionado);
     }
     catch (error) {
         prompt("error: " + error);
     }
 }
 
-function ActualizarCarrito(elemento) {
+
+function ActualizarCarrito(elemento) {///RECIBE EL PRODUCTO A AGREGAR AL CARRITO
     try {
         let carrito = [];
         if (sessionStorage.getItem("Carrito") != null) {
             carrito = JSON.parse(sessionStorage.getItem("Carrito"));
     
-            if (!Array.isArray(carrito)) {
-                carrito = [carrito];
-            }
+            if (!Array.isArray(carrito)) {carrito = [carrito];}
         }
-        carrito.push(elemento);
-        let min = 1;
-        if (min != carrito.length) {
-            VerificarProductos(carrito, carrito.length)
+        if(NuevoProducto(carrito, elemento.Id)){
+            carrito.push(elemento);
         }
         sessionStorage.setItem("Carrito", JSON.stringify(carrito));
     }
@@ -105,23 +99,15 @@ function ActualizarCarrito(elemento) {
     }
 }
 
-function VerificarProductos(carrito, cant) {
+function NuevoProducto(carrito, Idproducto) {
     try {
-        let bandera = 0;
-        while(bandera < cant){
-            let contador = 0;
-            for(let i=bandera+1;i<cant;i++){
-                if(carrito[bandera].Id == carrito[i].Id){
-                    contador=i;
-                }
-            }
-            if(contador!=0){
-                carrito[bandera].Cantidad++;
-                carrito.splice(contador,1);
-                cant--;
-            }
-            bandera++;
+        const neg = -1;
+        const idrepetido = carrito.findIndex(pr => pr.Id == Idproducto);
+        if(idrepetido != neg ){
+            carrito[idrepetido].Cantidad++;
+            return false;
         }
+        return true;
     }
     catch (error) {
         prompt("error: " + error);
@@ -134,7 +120,7 @@ function ProductoAgregado(){
             toast: true,
             position: "top-end",
             showConfirmButton: false,
-            timer: 1500,
+            timer: 900,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.onmouseenter = Swal.stopTimer;

@@ -47,7 +47,8 @@ function IncioCorrecto(Usuario){
             title: "Has iniciado sesion",
             icon: "success",
             draggable: true,
-            confirmButtonText:"Continuar"
+            confirmButtonText:"Continuar",
+            
           })
         setTimeout(() => {window.location.href = "index.html";}, 1500);
     }
