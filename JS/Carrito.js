@@ -69,14 +69,7 @@ function incrementar(id) {
     try {
         let carrito = JSON.parse(sessionStorage.getItem("Carrito")) || [];
         const Producto = carrito.find((elemnto) => elemnto.Id === id)
-    
-        if (Producto) {
-            Producto.Cantidad++;
-        }
-        else {if (id == '1ro') {
-                carrito[0].Cantidad++;
-            }
-        }
+        Producto ? Producto.Cantidad++ : carrito[0].Cantidad++;
         sessionStorage.setItem("Carrito", JSON.stringify(carrito));
         location.reload();
     }
@@ -93,7 +86,7 @@ function reducir(id) {
             Producto.Cantidad>1? Producto.Cantidad--:carrito.splice(Indice(id, carrito),1)
         }
         else {id == '1ro' && carrito[0].Cantidad>1?carrito[0].Cantidad--:carrito.splice(carrito[0],1)}
-    
+
         sessionStorage.setItem("Carrito", JSON.stringify(carrito));
         location.reload();
     }
@@ -105,9 +98,7 @@ function reducir(id) {
 function Indice(id, carrito){
     try {
         carrito.forEach((el)=>{
-            if(el.Id==id){
-                return el.Id;
-            }
+            if(el.Id==id){return el.Id;}
         })
     }
     catch (error) {
