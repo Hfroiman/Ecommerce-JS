@@ -1,0 +1,125 @@
+header {
+    padding: 15px;
+    display: grid;
+    grid-template-areas:
+        "Cte  titulo   carrito";
+    grid-template-rows: 2fr;
+    grid-template-columns: 2fr 2fr 2fr;
+    background-color: rgb(156, 152, 152);
+    height: 80px;
+    border: 1px solid black;
+}
+
+.titulo {
+    grid-area: titulo;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.titulo a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav {
+    grid-area: nav;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.carrito {
+    grid-area: carrito;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#Cte {
+    grid-area: Cte;
+}
+
+.img {
+    width: 50px;
+    height: 35px;
+}
+
+/*--------------------MAIN---------------------------------*/
+
+.detalle {
+    display: flex;
+    flex-direction: row;
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+    border: 5px solid rgb(38, 38, 38);
+    width: 1400px;
+    height: 650px;
+
+}
+
+#principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+}
+
+.sec1-detalle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(208, 199, 199);
+    margin: 1rem rgb(208, 199, 199);
+    width: 700px;
+}
+
+.sec1 img {
+    width: 640px;
+}
+
+.sec2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 600px;
+    margin: 3rem;
+
+}
+
+.titulo {
+    margin-bottom: 3rem;
+}
+
+.Descripción {
+    margin-bottom: 4rem;
+}
+
+.Precio h4 {
+    margin-bottom: 1rem;
+}
+
+.detalle-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.Btones {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer p {
+    margin-bottom: 3px;
+}
+
+@media (max-width:1440px) {
+    .detalle {
+        border: 5px solid rgb(38, 38, 38);
+        width: 975PX;
+        height: 500PX;
+    }
+}
