@@ -51,7 +51,7 @@ header {
     flex-direction: row;
     margin-top: 6rem;
     margin-bottom: 4rem;
-    border: 5px solid rgb(38, 38, 38);
+    border: 5px outset rgb(38, 38, 38);
     width: 1400px;
     height: 650px;
 

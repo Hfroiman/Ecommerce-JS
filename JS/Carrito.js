@@ -59,7 +59,8 @@ function PlantillaCard(Id, titulo, precio, cant, IMG) {
 
 function incrementar(id) {
     try {
-        let carrito = JSON.parse(sessionStorage.getItem("Carrito")) || [];
+        let carrito = JSON.parse(sessionStorage.getItem("Carrito"));
+        if (!Array.isArray(carrito)) { carrito = [carrito]; }
 
         const selecionado = carrito.find((elemnto) => elemnto.Id === id)
         selecionado.Contador < selecionado.Cantidad && selecionado && selecionado.Contador++;
@@ -74,8 +75,8 @@ function incrementar(id) {
 
 function reducir(id) {
     try{
-        debugger
-        let carrito = JSON.parse(sessionStorage.getItem("Carrito")) || [];
+        let carrito = JSON.parse(sessionStorage.getItem("Carrito"));
+        if (!Array.isArray(carrito)) { carrito = [carrito]; }
         let seleccionado = carrito.find((pr) => pr.Id == id);
 
         if(seleccionado.Contador > Min){

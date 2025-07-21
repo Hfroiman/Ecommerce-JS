@@ -81,6 +81,12 @@ header {
     margin: 20px;
     gap: 15px;
 }
+@media (max-width:1980px){
+    .card{
+        width: 280px;
+        height: auto;
+    }
+}
 
 @media (max-width:1540px){
     .card{
@@ -91,21 +97,6 @@ header {
         height: 220px;
         color: black;
     }
-    /*
-    .card h2{
-        font-size: calc(1.325rem + -0.1vw);
-    }
-    .card b{
-        font-size:  x-small;
-    }
-
-    .card button{
-        font-size: x-small;
-    }
-
-    .Precio{
-        font-size: x-small;
-    }*/
 }
 
 @media (max-width:768px){

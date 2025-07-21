@@ -64,19 +64,20 @@ function CargarDetalle(id, prod = false) {
     }
 }
 
-function Volver(){
+function Volver() {
     setTimeout(() => { window.location.href = "index.html"; }, 1000);
 }
 
 function Agregaralcarrito(id) {
     try {
-        debugger
         let carrito = [];
-        if(ExisteCarrito() && NoFueCargado(id)){//HAY CARRITO, VER SI ESTA EN EL CARRITO, SI NO ESTA SE CARGA.-
+        if (ExisteCarrito()) { //HAY CARRITO, VER SI ESTA EN EL CARRITO, SI NO ESTA SE CARGA.-
             carrito = JSON.parse(sessionStorage.getItem("Carrito"));
-            carrito.push(Productos.find((pr) => pr.Id == id));
+            if (!ProductoEnElCarrito(id, carrito)) {
+                carrito.push(Productos.find((pr) => pr.Id == id));
+            }
             sessionStorage.setItem("Carrito", JSON.stringify(carrito));
-        }else{//NO HAY CARRITO, CREAR Y AGREGAR -- OK
+        } else {//NO HAY CARRITO, CREAR Y AGREGAR -- OK
             carrito.push(Productos.find((pr) => pr.Id == id));
             sessionStorage.setItem("Carrito", JSON.stringify(carrito));
         }
@@ -88,13 +89,8 @@ function Agregaralcarrito(id) {
     }
 }
 
-function NoFueCargado(id){
-    return true;
-}
-
 function incrementar(id) {
     try {
-        debugger
         let carrito;
         if (ExisteCarrito()) {
             carrito = JSON.parse(sessionStorage.getItem("Carrito"));
@@ -126,7 +122,7 @@ function reducir(id) {
             carrito = JSON.parse(sessionStorage.getItem("Carrito"));
 
             if (!Array.isArray(carrito)) { carrito = [carrito]; }
-            if (!ProductoEnElCarrito(id, carrito)) { carrito.push(Productos[id]); }
+            if (!ProductoEnElCarrito(id)) { carrito.push(Productos[id]); }
 
             const selecionado = carrito.find((elemnto) => elemnto.Id == id);
             selecionado && selecionado.Contador > Min && selecionado.Contador--;
@@ -165,10 +161,12 @@ function ProductoAgregado() {
     }
 }
 
-function ProductoEnElCarrito(id, carrito) {
+function ProductoEnElCarrito(id) {
     try {
-        const existe = carrito.find((pr) => pr.Id == id);
-        if(existe){
+        carrito = JSON.parse(sessionStorage.getItem("Carrito"));
+        if (!Array.isArray(carrito)) { carrito = [carrito]; }
+        const existe = carrito.find(ca => ca.Id == id);
+        if (existe) {
             return true;
         }
         return false;
@@ -179,11 +177,9 @@ function ProductoEnElCarrito(id, carrito) {
 }
 
 function ExisteCarrito() {
-    if (sessionStorage.getItem("Carrito") != null) {
-        let carrito = [];
-        carrito = JSON.parse(sessionStorage.getItem("Carrito"));
-        if (!Array.isArray(carrito)) { carrito = [carrito]; }
-        return carrito;
+    const carrito = JSON.parse(sessionStorage.getItem("Carrito"));
+    if (!carrito) {
+        return false;
     }
-    return false;
+    return carrito;
 }

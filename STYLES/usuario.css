@@ -53,11 +53,6 @@ h2{
     color: black;
 }
 /*-----------.----------*/
-@media (max-width:1910px){
-
-}
-
-
 @media (max-width:768px){
     .titulo h2{
         font-size: 25px;
